@@ -1,40 +1,16 @@
 body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: #f7f8fa;
-    color: #333;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #f5f7fa;
     margin: 0;
-    padding: 0;
-}
-
-header {
-    background: #0366d6;
-    color: white;
-    padding: 1.5rem 0;
-    text-align: center;
-}
-
-main {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-}
-
-.intro p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-.contact {
-    margin-top: 2rem;
-    padding: 1rem;
-    background: #e9efff;
-    border-left: 5px solid #0366d6;
-}
-
-footer {
-    text-align: center;
-    padding: 1rem;
-    background: #f1f1f1;
-    font-size: 0.9rem;
-    color: #555;
-}
+    padding: 50px;
+  }
+  
+  h1 {
+    color: #0366d6;
+  }
+  
+  p {
+    font-size: 1.2em;
+  }
+  
