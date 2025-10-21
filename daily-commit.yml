@@ -1,0 +1,41 @@
+# This is the name of the GitHub Action workflow.
+name: Daily DevSync Update
+
+on:
+  # This section defines when the workflow will run.
+  schedule:
+    # Use cron syntax to run once per day at a specific time (e.g., 05:30 UTC).
+    # This fulfills the requirement for a specific hour/minute, not wildcards.
+    - cron: '30 5 * * *'
+  
+  # This allows you to manually run the workflow from the Actions tab on GitHub.
+  workflow_dispatch:
+
+jobs:
+  # This is the main job that will run.
+  daily-commit-job:
+    runs-on: ubuntu-latest
+    
+    # Permissions are required for the action to write back to your repository.
+    permissions:
+      contents: write
+
+    steps:
+      # Step 1: Check out the repository code.
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Create a daily commit. This step includes your email in its name as required.
+      - name: Commit daily update from 23f2001539@ds.study.iitm.ac.in
+        run: |
+          # Configure git with a bot user identity.
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          # Create or update a file with the current date to ensure there's a change to commit.
+          echo "Last updated on $(date)" > last_update.txt
+          
+          # Add the file, commit it, and push it to the repository.
+          git add last_update.txt
+          git commit -m "Automated daily update" || exit 0
+          git push
